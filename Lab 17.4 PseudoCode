@@ -1,0 +1,85 @@
+Import datetime module
+Import os module
+Import pickle module
+
+
+Define header function:
+    Assign working directory as working_directory
+    Assign local username as local_username
+    Assign current datetime as now
+    Assign formatted now as formatted_now
+
+    Print string with working_directory
+    Print string with local_username
+    Print string with formatted_now
+    Print empty string
+
+
+Define display menu function (accepts username):
+    Print empty line
+    Print menu
+    Print lines
+    Print option 1. Look up an email address
+    Print option 2. Add a new name and email address
+    Print option 3. Change an existing email address
+    Print option 4. Delete a name and email address
+    Print option 5. Quit the program
+    Print empty line
+    Return input of user choice using username
+
+
+Define run choice function (accept operation):
+    Input a name
+    If operation is "create":
+        If name is not in people_dict:
+            Input email to add as email
+            Add name-email key-value pair to people_dict
+            Print "Name and address have been added"
+        Else name is in people_dict:
+            Print "Name already exists"
+    Else If name is in people_dict:
+        Match operation against various cases:
+            Case where operation is "read":
+                Print relevant name
+                Print relevant email
+            Case where operation is "update":
+                Input email address to update as email
+                Update email address
+                Print "Information updated"
+            Case where operation is "delete":
+                Delete name-email key-value pair
+                Print "Information deleted"
+    Else name is not in people_dict:
+        Print "The specified name was not found"
+
+
+Define run menu function (accepts choice):
+    Match choice against various cases:
+        Case where choice is 1:
+            Call run choice function (operation = "read")
+        Case where choice is 2:
+            Call run choice function (operation = "create")
+        Case where choice is 3:
+            Call run choice function (operation = "update")
+        Case where choice is 4:
+            Call run choice function (operation = "delete")
+        Case where choice is 5:
+            Pickle people_dict into people_data.dat
+            Print "Information saved"
+            Assign False to running_program
+
+
+Define main function:
+    Call header function
+
+    Input user name as username
+    Unpickle file people_data.dat, save as people_dict
+
+    Assign True running programming boolean as running_program
+    While running_program is True:
+        Call display menu function using username, save return as choice
+        Call run menu function using choice
+
+
+If file is run directly:
+    Run main function
